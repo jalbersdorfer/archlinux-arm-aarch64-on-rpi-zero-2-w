@@ -80,3 +80,27 @@ umount boot root
 pacman-key --init
 pacman-key --populate archlinuxarm
 ```
+
+## Further Reading
+
+Where I stole the neccessary hints from:  
+https://archlinuxarm.org/forum/viewtopic.php?f=67&t=15695
+
+There was an effort to upgrade the system inside a `chroot` environment before the first boot.  
+Maybe this following Guide can help to `chroot` into the SD-Card, because the mentioned   
+`arch-chroot` command didn't work for me. It crashed with either with
+```
+chroot: failed to run command '/bin/bash': Exec format error
+```
+which can be resolved by installing the following `qemu` packages:
+```
+pacman -S qemu-user qemu-system-aarch64
+```
+Then it crashes with:
+```
+chroot: failed to run command ‘/bin/bash’: No such file or directory
+```
+
+which might be resolveable by copying `/usr/bin/qemu-aarch64` or maybe `/usr/bin/qemu-aarch64-static` into the chroot target as described here:
+
+https://archlinuxarm.org/forum/viewtopic.php?f=30&t=9294
