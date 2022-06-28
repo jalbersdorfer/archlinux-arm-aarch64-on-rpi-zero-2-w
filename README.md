@@ -101,6 +101,14 @@ Then it crashes with:
 chroot: failed to run command ‘/bin/bash’: No such file or directory
 ```
 
-which might be resolveable by copying `/usr/bin/qemu-aarch64` or maybe `/usr/bin/qemu-aarch64-static` into the chroot target as described here:
+which might be resolveable by copying `/usr/bin/qemu-aarch64` or maybe `/usr/bin/qemu-aarch64-static` into the chroot target  
+
+and running `proot` like  
+
+```
+proot -R . -q qemu-arm-static
+```
+
+as described here:
 
 https://archlinuxarm.org/forum/viewtopic.php?f=30&t=9294
